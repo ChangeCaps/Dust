@@ -9,15 +9,17 @@ public class Bullet : MonoBehaviour
     public GameObject indian;
     public GameObject cowboy;
     Vector3 dir;
+    public LineRenderer l;
     float ran;
     void Awake()
     {
+       
         r = this.gameObject.GetComponent<Rigidbody>();
-        indian = GameObject.Find("Indian");
+        indian = GameObject.Find("Enemy");
         cowboy = GameObject.Find("Cowboy");
+        l = cowboy.GetComponent<LineRenderer>();
         dir = indian.transform.position - cowboy.transform.position;
-        ran = Random.Range(Mathf.Clamp(dir.x -(10-Aim.t),-10,0), Mathf.Clamp(dir.x + (10-Aim.t),0,10));
-        Debug.Log(Mathf.Clamp(dir.x - (10 - Aim.t), -10, 0)+ " "+ Mathf.Clamp(dir.x + (10 - Aim.t), 0, 10));
+        ran = Random.Range(l.GetPosition(2).x, l.GetPosition(1).x);
 
         dir = new Vector3(ran, dir.y, dir.z);
        
