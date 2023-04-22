@@ -45,8 +45,24 @@ public class Player : MonoBehaviour {
             this.DrawDeviationCone();
         }
 
+        this.Look();
+
         if (!this.isAiming) {
             this.Move();
+        }
+    }
+
+
+    void Look() {
+        Transform transform = this.GetComponent<Transform>();
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity)) {
+            Vector3 dir = hit.point - transform.position;
+            float angle = 90.0f - Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
+            Vector3 euler = transform.eulerAngles;
+            transform.eulerAngles = new Vector3(euler.x, angle, euler.z);
         }
     }
 
@@ -56,19 +72,19 @@ public class Player : MonoBehaviour {
         Vector3 movement = new Vector3(0.0f, 0.0f, 0.0f);
 
         if (Input.GetKey("w")) {
-            movement += transform.forward;
+            movement += Vector3.forward;
         }
 
         if (Input.GetKey("s")) {
-            movement -= transform.forward;
+            movement += Vector3.back;
         }
 
         if (Input.GetKey("d")) {
-            movement += transform.right;
+            movement += Vector3.right;
         }
 
         if (Input.GetKey("a")) {
-            movement -= transform.right;
+            movement += Vector3.left;
         }
 
         Vector3 normalized = movement.normalized;
