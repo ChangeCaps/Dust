@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     // The time it takes for the player to aim.
     public float aimingTime;
     public GameObject bullet;
+    public float movementSpeed;
 
     LineRenderer lineRenderer;
     bool isAiming;
@@ -43,6 +44,35 @@ public class Player : MonoBehaviour {
         if (this.isAiming) {
             this.DrawDeviationCone();
         }
+
+        if (!this.isAiming) {
+            this.Move();
+        }
+    }
+
+    void Move() {
+        Transform transform = this.GetComponent<Transform>();
+        Rigidbody rigidbody = this.GetComponent<Rigidbody>();
+        Vector3 movement = new Vector3(0.0f, 0.0f, 0.0f);
+
+        if (Input.GetKey("w")) {
+            movement += transform.forward;
+        }
+
+        if (Input.GetKey("s")) {
+            movement -= transform.forward;
+        }
+
+        if (Input.GetKey("d")) {
+            movement += transform.right;
+        }
+
+        if (Input.GetKey("a")) {
+            movement -= transform.right;
+        }
+
+        Vector3 normalized = movement.normalized;
+        rigidbody.velocity = normalized * this.movementSpeed;
     }
 
     void Fire() {
