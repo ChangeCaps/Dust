@@ -246,6 +246,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3253382049136185699, guid: 744554e7849529744b4f9e6c768ef94c, type: 3}
   m_PrefabInstance: {fileID: 3253382049613490615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &616380634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616380628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2076fda40756be1428c28b5a588a65c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1611307417}
+  maxSpeed: 10
+  maxForce: 100
 --- !u!1001 &1036845826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -564,6 +579,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7584298992902203440, guid: 744554e7849529744b4f9e6c768ef94c, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 3253382049136185699, guid: 744554e7849529744b4f9e6c768ef94c, type: 3}
       propertyPath: m_Name
       value: Enemy

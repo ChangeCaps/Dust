@@ -109,7 +109,7 @@ public class Player : MonoBehaviour {
         float cos = Mathf.Cos(angle);
 
         Vector3 direction = new Vector3(cos, 0.0f, sin);
-        rb.AddForce(direction * 10000.0f);
+        rb.AddForce(direction * 2000.0f);
     }
 
     void DrawDeviationCone() {
